@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: meu-ingress-route
+  annotations:
+    kubernetes.io/ingress.class: traefik
+
+  spec:
+    entryPoints:
+      - web
+    routes:
+    - match: Host(`minha-api.test`)
+    kind: Rule
+    services:
+    - name: api-service
+      port: 80
