@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongodb-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:4.2.8
+        ports:
+          - containerPort: 27017
+        envFrom:
+          - secretRef:
+              name: mongodb-secret
+        volumeMounts:
+          - mountPath: /data/db 
+            name: mongo-data
+      volumes:
+        - name: mongo-data
+          hostPath:
+            path: /volume/mongodb
+
