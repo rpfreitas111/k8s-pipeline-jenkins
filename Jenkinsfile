@@ -33,7 +33,7 @@ pipeline {
           cloud 'kubernetes-microk8s'
         }
       }
-      enviroment {
+      environment {
         tag_version = "${env.BUILD_ID}"
       }
       steps {
@@ -44,6 +44,6 @@ pipeline {
         }
       }
     }
-    
+
   }
 }
