@@ -25,6 +25,22 @@ pipeline {
         }
       }
     }
-
+    stage('Deploy kubernetes') {
+      agent {
+        kubernetes {
+          cloud 'kubernetes-microk8s'
+        }
+      }
+      enviroment {
+        tag_version = "${env.BUILD_ID}"
+      }
+      steps {
+        script {
+          sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/api-deployment.yaml'
+          sh 'cat ./k8s/api/api-deployment.yaml'
+          kubernetesDeploy(configs: '**/k8s/**', kubeconfigId: 'kubeconfig')
+        }
+      }
+    }
   }
 }
