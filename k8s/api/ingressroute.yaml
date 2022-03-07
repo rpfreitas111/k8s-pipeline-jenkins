@@ -4,12 +4,11 @@ metadata:
   name: meu-ingress-route
   annotations:
     kubernetes.io/ingress.class: traefik
-
-  spec:
-    entryPoints:
-      - web
-    routes:
-    - match: Host(`minha-api.test`)
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`minha-api.test`)
     kind: Rule
     services:
     - name: api-service
