@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: rpfreitas111/k8s-pipeline-jenkins:v1
+        image: rpfreitas111/k8s-pipeline-jenkins:{{tag}}
         ports:
         - containerPort: 80
           name: http
