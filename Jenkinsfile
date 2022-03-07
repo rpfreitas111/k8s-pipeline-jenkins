@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/rpfreitas111/k8s-pipeline-jenkins.git', branch:'master'
+        git url:'https://github.com/rpfreitas111/k8s-pipeline-jenkins.git', branch:'main'
       }
     }
 
