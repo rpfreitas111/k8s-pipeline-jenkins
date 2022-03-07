@@ -15,6 +15,7 @@ pipeline {
         }
       }
     }
+
     stage('Push Image') {
       steps {
         script{
@@ -25,6 +26,7 @@ pipeline {
         }
       }
     }
+
     stage('Deploy kubernetes') {
       agent {
         kubernetes {
@@ -42,5 +44,6 @@ pipeline {
         }
       }
     }
+    
   }
 }
